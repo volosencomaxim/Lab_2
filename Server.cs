@@ -24,6 +24,7 @@ namespace UDPServer
         public Server()
         {
             server = new UdpClient(Service.serverPort);
+            endPoint = new IPEndPoint(IPAddress.Any, 0);
         }
 
         public void SendRequest(string input)
@@ -53,6 +54,10 @@ namespace UDPServer
 
                 if (isValid)
                     SendAck();
+            }
+            else
+            {
+                Console.WriteLine(clientMessage);
             }
 
         }
@@ -89,7 +94,7 @@ namespace UDPServer
             if (clientHash != hash)
                 return false;
 
-            Console.WriteLine(" - message : " + json["message"].ToString());
+            Console.WriteLine("** message : " + json["message"].ToString());
 
             return true;
         }
