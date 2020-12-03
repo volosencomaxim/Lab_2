@@ -38,7 +38,7 @@ namespace UDPServer
             CheckResponse();
         }
 
-        public void ReceiveResponse()
+        public string ReceiveResponse()
         {
             buffer = server.Receive(ref endPoint);
 
@@ -54,10 +54,11 @@ namespace UDPServer
 
                 if (isValid)
                     SendAck();
+                return clientMessage;
             }
             else
             {
-                Console.WriteLine(clientMessage);
+                return "none";
             }
 
         }
@@ -75,7 +76,6 @@ namespace UDPServer
 
             server.Send(buffer, buffer.Length, Service.hostName, Service.clientPort);
         }
-        // temporary
         private bool MessageChecker(string clientMessage)
         {
 
@@ -87,18 +87,11 @@ namespace UDPServer
 
             int hash = json["message"].ToString().GetHashCode();
 
-
-            //Console.WriteLine(clientMessage + "\n\n\n");
-
-            //Console.WriteLine(json["message"].ToString());
             if (clientHash != hash)
                 return false;
 
-            Console.WriteLine("** message : " + json["message"].ToString());
-
             return true;
         }
-        //#####
 
         private string RefactorUserInput(string clientInput)
         {
@@ -125,11 +118,11 @@ namespace UDPServer
                 if (message == "nack")
                 {
                     server.Send(buffer, buffer.Length, Service.hostName, Service.clientPort);
-                    Console.WriteLine("error");
+                    //Console.WriteLine("error");
                 }
                 if (message == "ack")
                 {
-                    Console.WriteLine("Good Requst");
+                    //Console.WriteLine("Good Requst");
                     break;
                 }
             }

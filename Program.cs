@@ -8,33 +8,18 @@ namespace UDPServer
         {
             Console.Title = "Server";
             Console.WriteLine("Server started ... ");
-            var server = new Server();
 
-            string data1 = "data";
-
-            bool isSecured = false;
+            ServerEncryption encryServer = new ServerEncryption();
 
             while (true)
-            {
-
-                while (!isSecured)
-                {
-                    server.ReceiveResponse();
-
-                    server.SendRequest(data1);
-                    isSecured = true;
-                }
-
-                server.ReceiveResponse();
-
+            { 
+                encryServer.CreateConnection();
 
                 //var clientInput = Console.ReadLine();
-                //server.SendRequest(clientInput);
+                //encryServer.SendRequest(clientInput);
 
-
+                encryServer.ReceiveResponse();
             }
-
-            Console.ReadKey();
         }
     }
 }
