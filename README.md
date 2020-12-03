@@ -5,7 +5,7 @@ You can open both in paralel projects via IDE like VS (used by me), VSCode or an
 
 I put each layer code in separate folders <3.
 
-For the third pot of this lab : "application-level protocol" I created simple UI for ATM (without data splitting).
+For the third point of this lab : "application-level protocol" I created simple UI for ATM (without data splitting).
 To access date you should enter a PIN Code.
 Choose one:
 
