@@ -1,4 +1,5 @@
 ﻿using System;
+using UDPServer.Layer_Application;
 
 namespace UDPServer
 {
@@ -9,17 +10,26 @@ namespace UDPServer
             Console.Title = "Server";
             Console.WriteLine("Server started ... ");
 
-            ServerEncryption encryServer = new ServerEncryption();
+            //ServerEncryption encryServer = new ServerEncryption();
+
+            //while (true)
+            //{ 
+            //    encryServer.CreateConnection();
+
+            //    //var clientInput = Console.ReadLine();
+            //    //encryServer.SendRequest(clientInput);
+
+            //    encryServer.ReceiveResponse();
+            //}
 
             while (true)
-            { 
-                encryServer.CreateConnection();
-
-                //var clientInput = Console.ReadLine();
-                //encryServer.SendRequest(clientInput);
-
-                encryServer.ReceiveResponse();
+            {
+                ATMController atm = new ATMController();
             }
+
+            //atm.GenerateData();
+
+            Console.ReadKey();
         }
     }
 }

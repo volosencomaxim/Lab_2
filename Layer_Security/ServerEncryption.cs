@@ -34,10 +34,11 @@ namespace UDPServer
             }
         }
 
-        public void ReceiveResponse()
+        public string ReceiveResponse()
         {
             encryptMessage = _udpServer.ReceiveResponse();
-            DecryptMessage();
+
+            return DecryptMessage();
         }
 
         public void SendRequest(string input)
@@ -57,11 +58,12 @@ namespace UDPServer
             return json["message"].ToString();
         }
 
-        public void DecryptMessage()
+        public string DecryptMessage()
         {
             string decryptMessage = encry.Decrypt(ExtractMessage(encryptMessage));
 
-            Console.WriteLine(decryptMessage);
+            //Console.WriteLine(decryptMessage);
+            return decryptMessage;
         }
     }
 }

@@ -104,7 +104,6 @@ namespace UDPServer
 
         private void CheckResponse()
         {
-            endPoint = new IPEndPoint(IPAddress.Any, 0);
             serverBuffer = server.Receive(ref endPoint);
 
             CheckMessageValidation(serverBuffer, buffer);
